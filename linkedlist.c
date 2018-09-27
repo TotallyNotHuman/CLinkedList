@@ -12,13 +12,14 @@ int ll_destroy(ll_t* list) {
 	ll_node_t* node = list->head;
 	int i = 0;
 	int j;
+	int len = list->length;
 	while (node != NULL) {
 		nodes[i] = node;
 		node = node->next;
 		i++;
 	}
 	free(list);
-	for (j = 0; j < list->length; j++) {
+	for (j = 0; j < len; j++) {
 		free(nodes[j]);
 	}
 	free(nodes);
