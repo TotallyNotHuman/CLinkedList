@@ -8,11 +8,11 @@ int ll_init(ll_t* list) {
 }
 
 int ll_destroy(ll_t* list) {
-	ll_node_t** nodes = (ll_node_t**) malloc(list->length * sizeof(ll_node_t*));
-	ll_node_t* node = list->head;
 	int i = 0;
 	int j;
 	int len = list->length;
+	ll_node_t* node = list->head;
+	ll_node_t** nodes = (ll_node_t**) malloc(len * sizeof(ll_node_t*));
 	while (node != NULL) {
 		nodes[i] = node;
 		node = node->next;
