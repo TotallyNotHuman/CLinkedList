@@ -1,11 +1,27 @@
-#include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include "linkedlist.h"
 
 int ll_init(ll_t* list) {
 	list->head = NULL;
 	list->length = 0;
+	return 0;
+}
+
+int ll_destroy(ll_t* list) {
+	ll_node_t** nodes = (ll_node_t**) malloc(list->length * sizeof(ll_node_t*));
+	ll_node_t* node = list->head;
+	int i = 0;
+	int j;
+	while (node != NULL) {
+		nodes[i] = node;
+		node = node->next;
+		i++;
+	}
+	free(list);
+	for (j = 0; j < list->length; j++) {
+		free(nodes[j]);
+	}
+	free(nodes);
 	return 0;
 }
 
