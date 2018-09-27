@@ -1,11 +1,19 @@
 #ifndef LL_H
 #define LL_H
 
+/* node data structure
+ * data - node data
+ * next - pointer to next node
+ */
 typedef struct ll_node {
     void* data;
     struct ll_node* next;
 } ll_node_t;
 
+/* linkedlist data structure
+ * head - head node
+ * length - length of the list
+ */
 typedef struct ll {
 	ll_node_t* head;
 	int length;
