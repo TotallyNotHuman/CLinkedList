@@ -86,6 +86,37 @@ int ll_delete(ll_t* list, int pos) {
 	}
 }
 
+int ll_substitute(ll_t* list, void* data, int pos) {
+	ll_node_t* target = list->head;
+	int i;
+	if (pos >= list->length) {
+		return 1;
+	} else if (pos == 0) {
+		target->data = data;
+		return 0;
+	} else {
+		for (i = 0; i < pos; i++) {
+			target = target->next;
+		}
+		target->data = data;
+		return 0;
+	}
+}
+
+int ll_reverse(ll_t* list) {
+	ll_node_t* meatstick = list->head;
+	ll_node_t* newhead = NULL;
+	ll_node_t* next = NULL;
+	while (meatstick != NULL) {
+		next = meatstick->next;
+		meatstick->next = newhead;
+		newhead = oldhead;
+		oldhead = next;
+	}
+	list->head = newhead;
+	return 0;
+}
+
 void* ll_lookup(ll_t* list, int pos) {
 	ll_node_t* target = list->head;
 	int i;
@@ -95,11 +126,7 @@ void* ll_lookup(ll_t* list, int pos) {
 		return target->data;
 	} else {
 		for (i = 0; i < pos; i++) {
-			if (pos >= list->length) {
-				return NULL;
-			} else {
-				target = target->next;
-			}
+			target = target->next;
 		}
 		return target->data;
 	}
