@@ -61,7 +61,29 @@ int ll_insert(ll_t* list, void* data, int pos) {
 }
 
 int ll_delete(ll_t* list, int pos) {
-	return 0;
+	ll_node_t* parent = list->head;
+	ll_node_t* target;
+	ll_node_t* child;
+	int i;
+	if (pos >= list->length) {
+		return 1;
+	} else if (pos == 0) {
+		target = list->head->next;
+		list->length--;
+		free(parent);
+		list->head = target;
+		return 0;
+	} else {
+		for (i = 0; i < pos - 1; i++) {
+			parent = parent->next;
+		}
+		target = parent->next;
+		child = target->next;
+		parent->next = child;
+		list->length--;
+		free(target);
+		return 0;
+	}
 }
 
 void* ll_lookup(ll_t* list, int pos) {
@@ -73,7 +95,11 @@ void* ll_lookup(ll_t* list, int pos) {
 		return target->data;
 	} else {
 		for (i = 0; i < pos; i++) {
-			target = target->next;
+			if (pos >= list->length) {
+				return NULL;
+			} else {
+				target = target->next;
+			}
 		}
 		return target->data;
 	}

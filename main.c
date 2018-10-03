@@ -7,10 +7,14 @@ int main(void) {
 	ll_init(mylist);
 	ll_insert(mylist, "Minster\n", 0);
 	ll_insert(mylist, "Anders\n", 1);
-	ll_insert(mylist, "Greg\n", 1);
-	printf(ll_lookup(mylist, 0));
-	printf(ll_lookup(mylist, 1));
-	printf(ll_lookup(mylist, 2));
+	ll_insert(mylist, "Greg\nn", 1);
+	printf("%s", ll_lookup(mylist, 0));
+	printf("%s", ll_lookup(mylist, 1));
+	printf("%s", ll_lookup(mylist, 2));
+	ll_delete(mylist, 0);
+	printf("%s", ll_lookup(mylist, 0));
+	printf("%s", ll_lookup(mylist, 1));
+	printf("%s", ll_lookup(mylist, 2));
 	ll_destroy(mylist);
 	return 0;
 }
