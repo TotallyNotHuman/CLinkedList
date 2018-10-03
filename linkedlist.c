@@ -59,3 +59,22 @@ int ll_insert(ll_t* list, void* data, int pos) {
 		return 1;
 	}
 }
+
+int ll_delete(ll_t* list, int pos) {
+	return 0;
+}
+
+void* ll_lookup(ll_t* list, int pos) {
+	ll_node_t* target = list->head;
+	int i;
+	if (pos >= list->length) {
+		return NULL;
+	} else if (pos == 0) {
+		return target->data;
+	} else {
+		for (i = 0; i < pos; i++) {
+			target = target->next;
+		}
+		return target->data;
+	}
+}

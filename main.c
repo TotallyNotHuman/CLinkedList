@@ -8,11 +8,9 @@ int main(void) {
 	ll_insert(mylist, "Minster\n", 0);
 	ll_insert(mylist, "Anders\n", 1);
 	ll_insert(mylist, "Greg\n", 1);
-	ll_node_t* node = mylist->head;
-	while (node != NULL) {
-		printf(node->data);
-		node = node->next;
-	}
+	printf(ll_lookup(mylist, 0));
+	printf(ll_lookup(mylist, 1));
+	printf(ll_lookup(mylist, 2));
 	ll_destroy(mylist);
 	return 0;
 }
